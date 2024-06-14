@@ -1,4 +1,6 @@
 import React, { useEffect, useContext } from 'react'
+import './about_section.css';
+
 
 const About = () => {
   

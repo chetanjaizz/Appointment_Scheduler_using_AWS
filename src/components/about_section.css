@@ -1,0 +1,26 @@
+.about-section {
+  padding: 20px;
+  border: 10px solid #093e73; /* Navy blue color */
+  border-radius: 5px;
+  /* background-color: #3498db; Blue color */
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 18px; /* Increase font size */
+}
+
+.key-features {
+  margin-top: 20px;
+}
+
+.key-features h3 {
+  margin-bottom: 10px;
+  font-size: 20px; /* Increase font size */
+}
+
+.key-features ol {
+  margin-left: 20px;
+}
+
+.key-features li {
+  margin-bottom: 10px;
+}

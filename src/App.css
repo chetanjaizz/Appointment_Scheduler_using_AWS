@@ -1,38 +1,161 @@
-.App {
+
+
+.icc{
+  margin: 0px 10px;
+  /* padding: ; */
+}
+/* App.css */
+
+/* Background image for the entire page */
+ .upperdiv{
+  background-image: url("../public/backg.jpg"); /* Adjust path as needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif; /* Example font */
+  /* height: 900
+  px; */
+  /* background */
+  height : 550px;
+}
+
+/* Other styles for your application */
+/* Ensure the container uses flexbox */
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Adjust the height as needed */
+}
+
+/* Make both rows equal in height */
+.row {
+  flex: 1;
+  display: flex;
+  /* height: 50%; */
+}
+
+.col-sm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc; /* Optional: for visual separation */
+}
+
+/* If you want to style the text inside the columns */
+.col-sm div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.centered-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Adjust padding as needed */
+}
+
+/* Container styling */
+.centered-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Button styling */
+.button {
+  margin: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.button .btn {
+  padding: 10px 20px;
+  border-radius: 25px; /* Circular sides, flat top and bottom */
+  background-color: #007bff; /* Primary color */
   color: white;
+  border: none;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.button .btn:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button .btn:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Focus shadow */
+}
+/* Container styling */
+.centered-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Scrollable row styling */
+.scrollable-row {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.scrollable-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollable-row::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 10px;
+}
+
+/* Button styling */
+.button {
+  margin: 10px;
+  display: inline-block; /* Keeps buttons inline */
+}
+
+.button .btn {
+  padding: 10px 20px;
+  border-radius: 25px; /* Circular sides, flat top and bottom */
+  background-color: #007bff; /* Primary color */
+  color: white;
+  border: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button .btn:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.button .btn:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Focus shadow */
+}
+
+/* .d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start{
+  height: 100px;
+} */
+
+
+
+
+.drop{
+  /* font-size: larger; */
+  color: black;
+}
+.home{
+  padding-right: 5%;
+  color: #0056b3;
+  font-weight: 600;
+}
+
+.iconss{
+  padding-left: 500px;
 }

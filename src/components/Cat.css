@@ -1,0 +1,23 @@
+.horizontal-scroller {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+  margin-left: 15%;
+  margin-right: 15%
+}
+
+.category-list {
+
+  display: flex;
+}
+
+.category-item {
+
+  /* padding: 15px; */
+  margin: 20px;
+ 
+  background-color: #f0f0f0;
+
+  border-radius: 15px;
+font-size:larger;  
+}

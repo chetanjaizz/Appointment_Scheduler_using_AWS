@@ -1,0 +1,76 @@
+.meal-list {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.meal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  max-width: 1200px; /* Adjust the width as necessary */
+}
+
+.meal-item {
+  display: flex;
+  flex-direction: column;
+  width: calc(50% - 20px); /* Adjust the width to ensure two items per row */
+  margin: 10px;
+  padding: 10px; /* Add padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.meal-content {
+  display: flex;
+  align-items: center;
+}
+
+.meal-image img {
+  width: 80px; /* Smaller image size */
+  height: auto;
+  margin-right: 20px; /* Space between image and text */
+}
+
+.meal-info {
+  flex-grow: 1;
+}
+
+.meal-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.meal-status {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.meal-status span {
+  margin-right: 5px;
+}
+
+.meal-description {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.q5 {
+  font-weight: bold;
+}
+
+.meal-item a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center; /* Aligns image and text vertically */
+}
+
+.meal-item span {
+  display: block;
+}

@@ -32,22 +32,47 @@ const Login = (props) => {
         setCredentials({...credentials, [e.target.name]:e.target.value})
       }
   return (
-    <div className='mt-2'>
-        <h2>Login to continue to Blink</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email address</label>
-            <input type="email" value={credentials.email} className="form-control" id="email" name='email' onChange={onChange} aria-describedby="emailHelp"/>
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" value={credentials.password} className="form-control" id="password" onChange={onChange} name='password'/>
-        </div>
-        
-        <button type="submit" className="btn btn-primary" >Login</button>
-      </form>
-    </div>
+   <div className="login-container d-flex align-items-center justify-content-center vh-100 bg-light">
+  <div className="card p-4 shadow-sm rounded-lg" style={{ maxWidth: '400px', width: '100%' }}>
+    <h3 className="text-center mb-4">Login to continue to Blink</h3>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-3">
+        <label htmlFor="email" className="form-label">Email address</label>
+        <input 
+          type="email" 
+          value={credentials.email} 
+          className="form-control border-0 shadow-sm rounded" 
+          id="email" 
+          name="email" 
+          onChange={onChange} 
+          aria-describedby="emailHelp" 
+          placeholder="Enter your email" 
+        />
+        <div id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="password" className="form-label">Password</label>
+        <input 
+          type="password" 
+          value={credentials.password} 
+          className="form-control border-0 shadow-sm rounded" 
+          id="password" 
+          name="password" 
+          onChange={onChange} 
+          placeholder="Enter your password" 
+        />
+      </div>
+      <button 
+        type="submit" 
+        className="btn btn-primary w-100 shadow-sm rounded-pill mt-3"
+        style={{ backgroundColor: '#007bff', borderColor: '#007bff' }}
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+
   )
 }
 

@@ -8,6 +8,7 @@ import axios from 'axios';
 // import MailForm from './MailForm';
 import { message } from "antd";
 import "./MyForm.css";
+import Appointments from './Appointments';
 
 
 // import './MyForm.css';
@@ -19,88 +20,109 @@ const Notes = (props) => {
 
   /////////////////////////////////////////////////////////////////////////////////////////////
   const [email, setEmail] = useState("");
-    const [subject, setSubject] = useState("");
-    const [description, setDescription] = useState("");
-    const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
+  const [subject, setSubject] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
-    // Date time conversion to UTC
-    function convertDate(date, time) {
-        // Construct datetime string
-        const dateTimeString = `${date}T${time}:00`;
-        const localTimestamp = new Date(dateTimeString);
+  // Date time conversion to UTC
+  function convertDate(date, time) {
+    // Construct datetime string
+    const dateTimeString = `${date}T${time}:00`;
+    const localTimestamp = new Date(dateTimeString);
 
-        // Get timezone offset in minutes
-        const timezoneOffsetMinutes = localTimestamp.getTimezoneOffset();
+    // Get timezone offset in minutes
+    const timezoneOffsetMinutes = localTimestamp.getTimezoneOffset();
 
-        // Adjust the timestamp by adding the timezone offset
-        const adjustedTimestamp = new Date(localTimestamp.getTime() - timezoneOffsetMinutes * 60000);
+    // Adjust the timestamp by adding the timezone offset
+    const adjustedTimestamp = new Date(localTimestamp.getTime() - timezoneOffsetMinutes * 60000);
 
-        // Convert adjusted timestamp to ISO string
-        const formattedTimestamp = adjustedTimestamp.toISOString().slice(0, -5); // Remove milliseconds and 'Z'
-        console.log("formattedTimestamp", formattedTimestamp); // Output: "2024-04-10T03:25:00"
+    // Convert adjusted timestamp to ISO string
+    const formattedTimestamp = adjustedTimestamp.toISOString().slice(0, -5); // Remove milliseconds and 'Z'
+    console.log("formattedTimestamp", formattedTimestamp); // Output: "2024-04-10T03:25:00"
 
-        const localDate = new Date(formattedTimestamp);
+    const localDate = new Date(formattedTimestamp);
 
-        // Extract individual components (UTC)
-        const utcYear = localDate.getUTCFullYear();
-        const utcMonth = localDate.getUTCMonth() + 1;
-        const utcDayOfMonth = localDate.getUTCDate();
-        const utcHour = localDate.getUTCHours();
-        const utcMinute = localDate.getUTCMinutes();
+    // Extract individual components (UTC)
+    const utcYear = localDate.getUTCFullYear();
+    const utcMonth = localDate.getUTCMonth() + 1;
+    const utcDayOfMonth = localDate.getUTCDate();
+    const utcHour = localDate.getUTCHours();
+    const utcMinute = localDate.getUTCMinutes();
 
-        // Prepare cron expression for one-time execution
-        return { utcMinute, utcHour, utcDayOfMonth, utcMonth, utcYear };
-    }
+    // Prepare cron expression for one-time execution
+    return { utcMinute, utcHour, utcDayOfMonth, utcMonth, utcYear };
+  }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        let { utcMinute, utcHour, utcDayOfMonth, utcMonth, utcYear } = convertDate(date, time);
-        console.log(utcMinute, utcHour, utcDayOfMonth, utcMonth, utcYear);
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   let { utcMinute, utcHour, utcDayOfMonth, utcMonth, utcYear } = convertDate(date, time);
+  //   console.log(utcMinute, utcHour, utcDayOfMonth, utcMonth, utcYear);
 
-        let requestObj = {
-            recipient: email,
-            cronExpression: {
-                utcYear: utcYear,
-                utcMonth: utcMonth,
-                utcDayOfMonth: utcDayOfMonth,
-                utcHour: utcHour,
-                utcMinute: utcMinute,
-            },
-            message: description,
-            subject: subject,
-        };
+  //   let requestObj = {
+  //     recipient: email,
+  //     cronExpression: {
+  //       utcYear: utcYear,
+  //       utcMonth: utcMonth,
+  //       utcDayOfMonth: utcDayOfMonth,
+  //       utcHour: utcHour,
+  //       utcMinute: utcMinute,
+  //     },
+  //     message: description,
+  //     subject: subject,
+  //   };
 
-        const url = "https://x7iffr1d18.execute-api.us-east-1.amazonaws.com/dev/sendEmail";
+  //   const url = "https://x7iffr1d18.execute-api.us-east-1.amazonaws.com/dev/sendEmail";
 
-        // Define the API key
-        const apiKey = "zpP4aqkCbE6zzShBuD7tnz/2yD8bCOt/z9lcp/B2";
+  //   // Define the API key
+  //   const apiKey = "zpP4aqkCbE6zzShBuD7tnz/2yD8bCOt/z9lcp/B2";
 
-        // Define the headers, including the API key
-        const headers = {
-            "x-api-key": apiKey,
-            "Content-Type": "application/json",
-            // Adjust content type if necessary
-        };
+  //   // Define the headers, including the API key
+  //   const headers = {
+  //     "x-api-key": apiKey,
+  //     "Content-Type": "application/json",
+  //     // Adjust content type if necessary
+  //   };
 
-        // Make the POST request using Axios
-        try {
-            let response = await axios.post(url, requestObj, { headers });
-            console.log("response", response);
-            if (response.data.statusCode === 200) {
-                message.success("Message sent successfully!");
-                setEmail("");
-                setSubject("");
-                setDescription("");
-                setDate("");
-                setTime("");
-            }
-        } catch (error) {
-            console.log("error", error);
-            message.error("Failed to send message!");
-        }
-    };
+  //   // Make the POST request using Axios
+  //   try {
+  //     let response = await axios.post(url, requestObj, { headers });
+  //     console.log("response", response);
+  //     if (response.data.statusCode === 200) {
+  //       message.success("Message sent successfully!");
+  //       setEmail("");
+  //       setSubject("");
+  //       setDescription("");
+  //       setDate("");
+  //       setTime("");
+  //     }
+  //   } catch (error) {
+  //     console.log("error", error);
+  //     message.error("Failed to send message!");
+  //   }
+  // };
   /////////////////////////////////////////////////////////////////////////////////////////////
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let { utcMinute, utcHour, utcDayOfMonth, utcMonth, utcYear } = convertDate(date, time);
+
+    let requestObj = {
+        recipient: email,
+        cronExpression: {
+            utcYear: utcYear,
+            utcMonth: utcMonth,
+            utcDayOfMonth: utcDayOfMonth,
+            utcHour: utcHour,
+            utcMinute: utcMinute,
+        },
+        message: description,
+        subject: subject,
+        createdAt: new Date().toISOString() // Store the current date and time
+    };
+
+    // Continue with the rest of your API call...
+};
 
   const [formData, setFormData] = useState({
     email: '',
@@ -143,10 +165,19 @@ const Notes = (props) => {
     // eslint-disable-next-line
   }, [])
 
+  // const updateNote = (currentNote) => {
+  //   ref.current.click();
+  //   setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
+  // }
   const updateNote = (currentNote) => {
     ref.current.click();
-    setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
-  }
+    setEmail(""); // Set this to the recipient's email if needed
+    setSubject(currentNote.title); // Use note title as subject
+    setDescription(currentNote.description); // Use note description
+    setDate(""); // Optional: Set default date
+    setTime(""); // Optional: Set default time
+}
+
 
   const ref = useRef(null)
   const refClose = useRef(null)
@@ -176,70 +207,92 @@ const Notes = (props) => {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Edit Note</h5>
+              <h5 className="modal-title" id="exampleModalLabel">Schedule</h5>
               <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close" >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
 
 
-{/* //////////////////////////////////////////////////////////////////////////////////////// */}
-<form className="center" onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="subject">Subject:</label>
-                <input
-                    type="text"
-                    id="subject"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="description">Description:</label>
-                <textarea
-                    id="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="date">Date:</label>
-                <input
-                    type="date"
-                    id="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="time">Time:</label>
-                <input
-                    type="time"
-                    id="time"
-                    value={time}
-                    onChange={(e) => setTime(e.target.value)}
-                    required
-                />
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+            {/* //////////////////////////////////////////////////////////////////////////////////////// */}
+        
+            <form className="container p-4 shadow-sm rounded bg-light" onSubmit={handleSubmit}>
+  <h3 className="text-center mb-4">Schedule this appointment</h3>
 
-{/* //////////////////////////////////////////////////////////////////////////////////////// */}
+  <div className="mb-3">
+    <label htmlFor="email" className="form-label">Email:</label>
+    <input
+      type="email"
+      className="form-control"
+      id="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      placeholder="Enter receiver's email"
+      required
+    />
+  </div>
 
-            
+  <div className="mb-3">
+    <label htmlFor="title" className="form-label">Title:</label>
+    <input
+      type="text"
+      className="form-control"
+      id="title"
+      value={subject} // This is now the title
+      onChange={(e) => setSubject(e.target.value)}
+      placeholder="Enter the title"
+      required
+    />
+  </div>
+
+  <div className="mb-3">
+    <label htmlFor="description" className="form-label">Description:</label>
+    <textarea
+      id="description"
+      className="form-control"
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+      rows="3"
+      placeholder="Describe the purpose"
+      required
+    />
+  </div>
+
+  <div className="row mb-3">
+    <div className="col-md-6">
+      <label htmlFor="date" className="form-label">Date:</label>
+      <input
+        type="date"
+        className="form-control"
+        id="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        required
+      />
+    </div>
+
+    <div className="col-md-6">
+      <label htmlFor="time" className="form-label">Time:</label>
+      <input
+        type="time"
+        className="form-control"
+        id="time"
+        value={time}
+        onChange={(e) => setTime(e.target.value)}
+        required
+      />
+    </div>
+  </div>
+
+  <div className="text-center">
+    <button type="submit" className="btn btn-primary px-4">Send</button>
+  </div>
+</form>
+
+
+            {/* //////////////////////////////////////////////////////////////////////////////////////// */}
+
+
 
           </div>
         </div>
@@ -250,9 +303,18 @@ const Notes = (props) => {
           {notes.length === 0 && 'No appoinments to display'}
         </div>
         {notes.map((note) => {
-          return <NoteItem key={note._id} showAlert={props.showAlert} updateNote={updateNote} note={note} />;
-        })}
+    return (
+        <NoteItem 
+            key={note._id} 
+            showAlert={props.showAlert} 
+            updateNote={updateNote} 
+            note={{ ...note, createdAt: note.createdAt }} // Make sure createdAt is included
+        />
+    );
+})}
+
       </div>
+
     </>
   )
 }

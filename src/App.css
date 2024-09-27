@@ -6,6 +6,19 @@
   height: 40vmin;
   pointer-events: none;
 }
+.dropdown-div{
+  display: flex;
+  gap: 5%;
+  margin: 0 5% 0 5% ;
+}
+.title{
+  margin: 0 5% 0 5% ;
+
+}
+.description{
+  margin: 0 5% 0 5%;
+  
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

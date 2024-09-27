@@ -8,6 +8,8 @@ import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import { useState } from 'react';
+import Appointments from './components/Appointments';
+
 
 
 function App() {
@@ -33,6 +35,7 @@ function App() {
             <Route exact path='/about' element={<About/>}/>
             <Route exact path='/login' element={<Login showAlert={showAlert}/>}/>
             <Route exact path='/signup' element={<Signup showAlert={showAlert}/>}/>
+            <Route exact path='/appointments' element={<Appointments showAlert={showAlert} />} /> {/* New Route */}
           </Routes>
         </div>
       </Router>

@@ -19,7 +19,7 @@ const Appointments = ({ showAlert }) => {
 
     return (
         <div className="container my-3">
-            <h2>Scheduled Appointments</h2>
+            <h2>Appointments</h2>
             <div className="container mx-2">
                 {notes.length === 0 ? 'No appointments to display' : null}
             </div>

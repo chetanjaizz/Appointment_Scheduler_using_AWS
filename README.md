@@ -1,18 +1,22 @@
 Home Page
 
-![image](https://github.com/user-attachments/assets/7efef4c9-3022-4657-99fe-9a2332cbede3)
+![Screenshot 2024-11-17 121918](https://github.com/user-attachments/assets/8f5671e7-0eb6-4547-8218-810425ea29a0)
+
 
 Appointments to be scheduled
 
 ![Screenshot 2024-11-17 121933](https://github.com/user-attachments/assets/7e9d4663-8508-4345-a62c-5b481a0ab9c4)
 
+
 Scheduled Appointment page
 
 ![Screenshot 2024-11-17 121947](https://github.com/user-attachments/assets/2763ab70-6057-46a3-9a9d-d9adbdeabf68)
 
+
 Scheduling Form
 
 ![image](https://github.com/user-attachments/assets/94058bb2-3ed9-45a3-8282-b975451cc811)
+
 
 About Section
 
